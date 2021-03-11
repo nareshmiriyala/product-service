@@ -1,7 +1,7 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.3'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'groovy'
+  id 'org.springframework.boot' version '2.4.3'
+  id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+  id 'groovy'
 }
 
 group = 'au.com.company'
@@ -9,15 +9,22 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
-	mavenCentral()
+  mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.codehaus.groovy:groovy'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.codehaus.groovy:groovy:3.0.5'
+  implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
+  testImplementation('org.spockframework:spock-core:2.0-M3-groovy-3.0')
+  testImplementation('org.spockframework:spock-spring:2.0-M3-groovy-3.0')
+  testImplementation('org.springframework.boot:spring-boot-starter-test') {
+    exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+  }
+
+
 }
 
 test {
-	useJUnitPlatform()
+  useJUnitPlatform()
 }
